@@ -565,7 +565,11 @@
       <created>1500727177516</created>
       <updated>1500727177516</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="商城base">
+      <created>1500727353925</created>
+      <updated>1500727353925</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
