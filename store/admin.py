@@ -2,7 +2,7 @@
 from django.contrib import admin
 from store.models import *
 
-class ClothingAdmin(admin.ModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
     list_display = ('brand','name','num',)
     fieldsets = (
         ('None',{'fields':('category','name','brand','size','old_price',
@@ -15,4 +15,4 @@ admin.site.register(Category)
 admin.site.register(Tag)
 admin.site.register(Size)
 admin.site.register(Brand)
-admin.site.register(Clothing,ClothingAdmin)
+admin.site.register(Product,ProductAdmin)

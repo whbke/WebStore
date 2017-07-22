@@ -14,15 +14,15 @@
 		  </tr>
           {% for item in cart.items %}
 		  <tr>
-			<td class="ring-in"><a href="{% url 'detail' %}?did={{ item.clothing.id }}" class="at-in"><img src="{{ MEDIA_URL }}{{ item.clothing.image_url_c }}" class="img-responsive" alt=""></a>
+			<td class="ring-in"><a href="{% url 'detail' %}?did={{ item.product.id }}" class="at-in"><img src="{{ MEDIA_URL }}{{ item.product.image_url_c }}" class="img-responsive" alt=""></a>
 			<div class="sed">
-				<h5>{{ item.clothing.name }}</h5>
-				<p>{{ item.clothing.desc }}</p>
+				<h5>{{ item.product.name }}</h5>
+				<p>{{ item.product.desc }}</p>
 			</div>
 			<div class="clearfix"> </div></td>
 			<td class="check"><input type="text" value="{{ item.quantity }}" readonly="readonly"></td>
-			<td style="text-decoration:line-through">{{ item.clothing.old_price }}元</td>
-			<td>{{ item.clothing.new_price }}元</td>
+			<td style="text-decoration:line-through">{{ item.product.old_price }}元</td>
+			<td>{{ item.product.new_price }}元</td>
 			<td>{{ item.sum_price }}元</td>
 		  </tr>
           {% endfor %}

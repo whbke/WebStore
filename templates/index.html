@@ -9,7 +9,7 @@
         <div class="content-top">
             <h1>最新商品</h1>
             <div class="content-top1">
-                {% for clo in clo_list %}
+                {% for clo in product_list %}
                 <form action="{% url 'add_cart'%}" method="post" id="subform{{ clo.id }}">
                 {% csrf_token %}
                 <div class="col-md-3 col-md2">

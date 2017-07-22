@@ -14,8 +14,8 @@
         {% endif %}
 		<div class="col-md-9">
 			<div class="content-top1">
-                {% if clo_list %}
-                    {% for clo in clo_list %}
+                {% if product_list %}
+                    {% for clo in product_list %}
                     <div class="col-md-4 col-md3">
                         <div class="col-md1 simpleCart_shelfItem">
                             <a href="{% url 'detail' %}?did={{ clo.id }}">

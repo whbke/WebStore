@@ -26,7 +26,7 @@ SECRET_KEY = 'j6tf=1zt00#9xr-3a4*7%qy)0wiqf1ib7*afrvc_^!#3k%2a3u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-DB_DEBUG = True
+DB_DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -97,7 +97,7 @@ else:
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'storedb',
             'USER': 'root',
-            'PASSWORD': 'root',
+            'PASSWORD': '123456',
             'HOST': '',
             'PORT': '',
         }

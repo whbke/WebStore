@@ -1,16 +1,15 @@
 # coding: utf-8
-from django.shortcuts import render, redirect
+from django.shortcuts import render,redirect
 from store.models import *
 from django.conf import settings
 import logging
-from django.core.paginator import Paginator, InvalidPage, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator,InvalidPage,EmptyPage,PageNotAnInteger
 from store.forms import *
-from django.contrib.auth import logout, login, authenticate
+from django.contrib.auth import logout,login,authenticate
 from django.contrib.auth.hashers import make_password
 from django.db.models import F
 
 logger = logging.getLogger('store.views')
-
 
 def authenticated_view(function):
   def wrap(request, *args, **kwargs):
@@ -162,7 +161,6 @@ def view_cart(request):
     cart = request.session.get(request.user.id, None)
     return render(request, 'checkout.html', locals())
 
-
 #添加购物车
 @authenticated_view
 def add_cart(request):
@@ -172,7 +170,7 @@ def add_cart(request):
             product = Product.objects.get(pk=chid)
         except Product.DoesNotExist:
             return render(request, 'error.html', {'reason':'商品不存在'})
-        cart = request.session.get(request.user.id, None)
+        cart = request.session.get(request.user.id,None)
         if not cart:
             cart = Cart()
             cart.add(product)
@@ -184,27 +182,11 @@ def add_cart(request):
         logger.error(e)
     return render(request, 'checkout.html', locals())
 
-
 #清空购物车
 @authenticated_view
-def clean_cart(request):
+def cleanCart(request):
     cart = Cart()
     request.session[request.user.id] = cart
-    return render(request, 'checkout.html', locals())
-
-
-#保存购物车，生成订单
-@authenticated_view
-def make_order(request):
-    try:
-        chid = request.POST.get('chid', None)
-        if not cart:
-            return render(request, 'error.html', {'reason': '没有商品'})
-        else:
-            cart = request.session.get(request.user.id, None)
-            OrderItem.objects.create(orderno="xxxx")
-    except Exception as e:
-        logger.error(e)
     return render(request, 'checkout.html', locals())
 
 @authenticated_view
@@ -220,7 +202,7 @@ def clean_one_item(request, id):
     return render(request, 'checkout.html', {'cart':cart})
 
 #打折商品
-def get_discount(request):
+def getDiscount(request):
     try:
         product_list = Product.objects.filter(new_price__lt=F('old_price'))
         product_list = getPage(request,product_list)
@@ -237,6 +219,6 @@ def getPage(request,product_list):
     try:
         page = int(request.GET.get('page',1))
         product_list = paginator.page(page)
-    except (EmptyPage, InvalidPage, PageNotAnInteger):
+    except (EmptyPage,InvalidPage,PageNotAnInteger):
         product_list = paginator.page(1)
     return product_list

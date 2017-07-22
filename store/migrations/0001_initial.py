@@ -77,7 +77,6 @@ class Migration(migrations.Migration):
                 ('typ', models.CharField(verbose_name='所属大类', max_length=20)),
                 ('name', models.CharField(verbose_name='分类名称', max_length=30)),
                 ('index', models.IntegerField(default=1, verbose_name='分类的排序')),
-                ('sex', models.IntegerField(default=0, verbose_name='性别')),
             ],
             options={
                 'verbose_name': '分类',
@@ -86,7 +85,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='Clothing',
+            name='Product',
             fields=[
                 ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
                 ('name', models.CharField(verbose_name='名称', max_length=30)),
@@ -96,10 +95,11 @@ class Migration(migrations.Migration):
                 ('desc', models.CharField(verbose_name='简介', max_length=100)),
                 ('sales', models.IntegerField(default=0, verbose_name='销量')),
                 ('num', models.IntegerField(default=0, verbose_name='库存')),
-                ('image_url_i', models.ImageField(default='clothing/default.jpg', verbose_name='展示图片路径', upload_to='clothing/%Y/%m')),
-                ('image_url_l', models.ImageField(default='clothing/default.jpg', verbose_name='详情图片路径1', upload_to='clothing/%Y/%m')),
-                ('image_url_m', models.ImageField(default='clothing/default.jpg', verbose_name='详情图片路径2', upload_to='clothing/%Y/%m')),
-                ('image_url_r', models.ImageField(default='clothing/default.jpg', verbose_name='详情图片路径3', upload_to='clothing/%Y/%m')),
+                ('image_url_i', models.ImageField(default='product/default.jpg', verbose_name='展示图片路径', upload_to='product/%Y/%m')),
+                ('image_url_l', models.ImageField(default='product/default.jpg', verbose_name='详情图片路径1', upload_to='product/%Y/%m')),
+                ('image_url_m', models.ImageField(default='product/default.jpg', verbose_name='详情图片路径2', upload_to='product/%Y/%m')),
+                ('image_url_r', models.ImageField(default='product/default.jpg', verbose_name='详情图片路径3', upload_to='product/%Y/%m')),
+                ('image_url_c', models.ImageField(default='product/ce.jpg', verbose_name='购物车展示图片', upload_to='product/%Y/%m')),
                 ('brand', models.ForeignKey(verbose_name='品牌', to='store.Brand')),
                 ('category', models.ForeignKey(verbose_name='分类', to='store.Category')),
             ],
@@ -133,13 +133,27 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': '标签',
             },
         ),
+        migrations.CreateModel(
+            name='Caritem',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
+                ('quantity', models.IntegerField(verbose_name='数量', default=0)),
+                ('sum_price', models.IntegerField(verbose_name='小计', default=0)),
+                ('product', models.ForeignKey(verbose_name='购物车中产品条目', to='store.Product')),
+            ],
+            options={
+                'verbose_name_plural': '购物车条目',
+                'verbose_name': '购物车条目',
+            },
+        ),
+
         migrations.AddField(
-            model_name='clothing',
+            model_name='product',
             name='size',
             field=models.ManyToManyField(verbose_name='尺寸', to='store.Size'),
         ),
         migrations.AddField(
-            model_name='clothing',
+            model_name='product',
             name='tag',
             field=models.ManyToManyField(verbose_name='标签', to='store.Tag'),
         ),

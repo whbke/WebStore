@@ -92,7 +92,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="h_nav">
                                     <h4>服装</h4>
                                     <ul>
-                                        {% for ca in category_list_m %}
+                                        {% for ca in category_list %}
                                             {% if ca.typ == '服装' %}
                                                 <li><a href="{% url 'products' %}?cid={{ ca.id }}">{{ ca.name }}</a></li>
                                             {% endif %}
@@ -104,47 +104,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="h_nav">
                                     <h4>鞋子</h4>
                                     <ul>
-                                        {% for ca in category_list_m %}
-                                            {% if ca.typ == '鞋子' %}
-                                                <li><a href="{% url 'products' %}?cid={{ ca.id }}">{{ ca.name }}</a></li>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col1">
-                                <div class="h_nav">
-                                    <h4>热卖品牌</h4>
-                                    <ul>
-                                        {% for brand in brand_list %}
-                                            <li><a href="{% url 'brands' %}?bid={{ brand.id }}">{{ brand.name }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="grid"><a  href="#">	女装</a>
-                    <div class="mepanel">
-                        <div class="row">
-                            <div class="col1">
-                                <div class="h_nav">
-                                    <h4>服装</h4>
-                                    <ul>
-                                        {% for ca in category_list_f %}
-                                            {% if ca.typ == '服装' %}
-                                                <li><a href="{% url 'products' %}?cid={{ ca.id }}">{{ ca.name }}</a></li>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col1">
-                                <div class="h_nav">
-                                    <h4>鞋子</h4>
-                                    <ul>
-                                        {% for ca in category_list_f %}
+                                        {% for ca in category_list %}
                                             {% if ca.typ == '鞋子' %}
                                                 <li><a href="{% url 'products' %}?cid={{ ca.id }}">{{ ca.name }}</a></li>
                                             {% endif %}

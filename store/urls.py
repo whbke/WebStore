@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^logout/$', do_logout, name='logout'),
     url(r'^view_cart/$', view_cart, name='view_cart'),
     url(r'^add_cart/$', add_cart, name='add_cart'),
-    url(r'^clean_cart/$', cleanCart, name='clean_cart'),
+    url(r'^clean_cart/$', clean_cart, name='clean_cart'),
     url(r'^brands/$', brands, name='brands'),
-    url(r'discount/$', getDiscount, name='discount')
+    url(r'discount/$', get_discount, name='discount')
 ]
